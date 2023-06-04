@@ -3,14 +3,14 @@ const axios = require('axios');
 
 router.get('/random', async(req, res) => {
   const options = {
-    url: 'https://youtube-v31.p.rapidapi.com/search',
+    url: `${process.env.API_KEY}/search`,
     params: {
       part: 'snippet,id',
       maxResults: '50',
     },
     headers: {
-      'X-RapidAPI-Key': '1cf4946cddmsh1acab0b3b1f40adp1537ffjsn59391fc76084',
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.API_KEY,
+      'X-RapidAPI-Host': process.env.API_URL
     }
   };
 
@@ -30,7 +30,7 @@ router.get('/suggested/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: 'https://youtube-v31.p.rapidapi.com/search',
+    url: `${process.env.API_KEY}/search`,
     params: {
       relatedToVideoId: `${id}`,
       part: 'id,snippet',
@@ -38,8 +38,8 @@ router.get('/suggested/:id', async(req, res) => {
       maxResults: '50'
     },
     headers: {
-      'X-RapidAPI-Key': '1cf4946cddmsh1acab0b3b1f40adp1537ffjsn59391fc76084',
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.API_KEY,
+      'X-RapidAPI-Host': process.env.API_URL
     }
   };
 
@@ -59,15 +59,15 @@ router.get('/search/:q', async(req, res) => {
   const q = req.params.q
 
     const options = {
-    url: 'https://youtube-v31.p.rapidapi.com/search',
+    url: `${process.env.API_KEY}/search`,
     params: {
       q: `${q}`,
       part: 'snippet,id',
       maxResults: '50',
     },
     headers: {
-      'X-RapidAPI-Key': '1cf4946cddmsh1acab0b3b1f40adp1537ffjsn59391fc76084',
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.API_KEY,
+      'X-RapidAPI-Host': process.env.API_URL
     }
   };
 
@@ -87,15 +87,15 @@ router.get('/vidio-comment/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: 'https://youtube-v31.p.rapidapi.com/commentThreads',
+    url: `${process.env.API_KEY}/commentThreads`,
     params: {
       part: 'snippet',
       videoId: `${id}`,
       maxResults: '100'
     },
     headers: {
-      'X-RapidAPI-Key': '1cf4946cddmsh1acab0b3b1f40adp1537ffjsn59391fc76084',
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.API_KEY,
+      'X-RapidAPI-Host': process.env.API_URL
     }
   };
 
@@ -115,14 +115,14 @@ router.get('/vidio-details/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: 'https://youtube-v31.p.rapidapi.com/videos',
+    url: `${process.env.API_KEY}/videos`,
     params: {
       part: 'contentDetails,snippet,statistics',
       id: `${id}`
     },
     headers: {
-      'X-RapidAPI-Key': '1cf4946cddmsh1acab0b3b1f40adp1537ffjsn59391fc76084',
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.API_KEY,
+      'X-RapidAPI-Host': process.env.API_URL
     }
   };
 
@@ -142,14 +142,14 @@ router.get('/channel-details/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: 'https://youtube-v31.p.rapidapi.com/channels',
+    url: `${process.env.API_KEY}/channels`,
     params: {
       part: 'snippet,statistics',
       id: `${id}`
     },
     headers: {
-      'X-RapidAPI-Key': '1cf4946cddmsh1acab0b3b1f40adp1537ffjsn59391fc76084',
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.API_KEY,
+      'X-RapidAPI-Host': process.env.API_URL
     }
   };
 
@@ -169,7 +169,7 @@ router.get('/channel-vidio/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: 'https://youtube-v31.p.rapidapi.com/search',
+    url: `${process.env.API_KEY}/search`,
     params: {
       channelId: `${id}`,
       part: 'snippet,id',
@@ -177,8 +177,8 @@ router.get('/channel-vidio/:id', async(req, res) => {
       maxResults: '50'
     },
     headers: {
-      'X-RapidAPI-Key': '1cf4946cddmsh1acab0b3b1f40adp1537ffjsn59391fc76084',
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.API_KEY,
+      'X-RapidAPI-Host': process.env.API_URL
     }
   };
 
@@ -199,15 +199,15 @@ router.get('/playlist-video/:id', async(req, res) => {
 
     const options = {
     method: 'GET',
-    url: 'https://youtube-v31.p.rapidapi.com/playlistItems',
+    url: `${process.env.API_KEY}/playlistItems`,
     params: {
       playlistId: `${id}`,
       part: 'snippet',
       maxResults: '50'
     },
     headers: {
-      'X-RapidAPI-Key': '1cf4946cddmsh1acab0b3b1f40adp1537ffjsn59391fc76084',
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.API_KEY,
+      'X-RapidAPI-Host': process.env.API_URL
     }
   };
 
