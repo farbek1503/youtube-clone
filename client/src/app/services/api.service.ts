@@ -8,7 +8,7 @@ export class ApiService {
 	
   constructor(private http: HttpClient) { }
 	
-	baseUrl:string = 'http://localhost:3000'
+	baseUrl:string = 'https://youtube-clone-server.vercel.app'
 	
 	getRandom(){
 		return this.http.get(`${this.baseUrl}/random`)
