@@ -3,7 +3,7 @@ const axios = require('axios');
 
 router.get('/random', async(req, res) => {
   const options = {
-    url: `${process.env.API_KEY}/search`,
+    url: `${process.env.BASE_URL}/search`,
     params: {
       part: 'snippet,id',
       maxResults: '50',
@@ -30,7 +30,7 @@ router.get('/suggested/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: `${process.env.API_KEY}/search`,
+    url: `${process.env.BASE_URL}/search`,
     params: {
       relatedToVideoId: `${id}`,
       part: 'id,snippet',
@@ -59,7 +59,7 @@ router.get('/search/:q', async(req, res) => {
   const q = req.params.q
 
     const options = {
-    url: `${process.env.API_KEY}/search`,
+    url: `${process.env.BASE_URL}/search`,
     params: {
       q: `${q}`,
       part: 'snippet,id',
@@ -87,7 +87,7 @@ router.get('/vidio-comment/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: `${process.env.API_KEY}/commentThreads`,
+    url: `${process.env.BASE_URL}/commentThreads`,
     params: {
       part: 'snippet',
       videoId: `${id}`,
@@ -115,7 +115,7 @@ router.get('/vidio-details/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: `${process.env.API_KEY}/videos`,
+    url: `${process.env.BASE_URL}/videos`,
     params: {
       part: 'contentDetails,snippet,statistics',
       id: `${id}`
@@ -142,7 +142,7 @@ router.get('/channel-details/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: `${process.env.API_KEY}/channels`,
+    url: `${process.env.BASE_URL}/channels`,
     params: {
       part: 'snippet,statistics',
       id: `${id}`
@@ -169,7 +169,7 @@ router.get('/channel-vidio/:id', async(req, res) => {
   const id = req.params.id
 
     const options = {
-    url: `${process.env.API_KEY}/search`,
+    url: `${process.env.BASE_URL}/search`,
     params: {
       channelId: `${id}`,
       part: 'snippet,id',
@@ -199,7 +199,7 @@ router.get('/playlist-video/:id', async(req, res) => {
 
     const options = {
     method: 'GET',
-    url: `${process.env.API_KEY}/playlistItems`,
+    url: `${process.env.BASE_URL}/playlistItems`,
     params: {
       playlistId: `${id}`,
       part: 'snippet',
