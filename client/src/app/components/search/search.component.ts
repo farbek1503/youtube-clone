@@ -17,8 +17,11 @@ export class SearchComponent implements OnInit {
 		this.acRoute.queryParams.subscribe(params => {
 			const q = params['results'];
 			this.apiSer.search(q).subscribe((res:any) => {
-				console.log(res)
-				this.data = res.data.items
+				if(res.data.items == undefined){
+					alert("Today's Limit Is Over, Please Enter Tomorrow")
+				}else{
+					this.data = res.data.items
+				}
 			})
 		});
 	}

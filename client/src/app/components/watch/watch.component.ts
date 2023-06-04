@@ -30,25 +30,30 @@ export class WatchComponent implements OnInit {
 		this.acRoute.params.subscribe(params => {
 			const id = params['id'];
 			this.apiSer.vidioDetails(id).subscribe((res:any) => {
-				console.log(res)
-				this.videoSources[0].src = res.data.items[0].id
-				this.data = res.data.items
+				if(res.data.items == undefined){
+					alert("Today's Limit Is Over, Please Enter Tomorrow")
+				}else{
+					this.videoSources[0].src = res.data.items[0].id
+					this.data = res.data.items
+				}
 			})
 			
 			this.apiSer.vidioComment(id).subscribe((res:any) => {
-				console.log('comments', res)
-				this.commentData = res.data.items
+				if(res.data.items == undefined){
+					alert("Today's Limit Is Over, Please Enter Tomorrow")
+				}else{
+					this.commentData = res.data.items
+				}
 			})
 			
 			this.apiSer.suggested(id).subscribe((res:any) => {
-				console.log(res)
-				this.suggestedData = res.data.items
+				if(res.data.items == undefined){
+					alert("Today's Limit Is Over, Please Enter Tomorrow")
+				}else{
+					this.suggestedData = res.data.items
+				}
 			})
 		});
-	}
-	
-	played(event: Plyr.PlyrEvent) {
-		console.log('played', event);
 	}
 	
 	watchRouter(id:any){

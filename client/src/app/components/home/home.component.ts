@@ -14,8 +14,11 @@ export class HomeComponent implements OnInit {
 	
 	ngOnInit(): void {
 		this.apiSer.getRandom().subscribe((res:any) => {
-			console.log(res.data.items)
-			this.data = res.data.items
+			if(res.data.items == undefined){
+				alert("Today's Limit Is Over, Please Enter Tomorrow")
+			}else{
+				this.data = res.data.items
+			}
 		})
 	}
 	
