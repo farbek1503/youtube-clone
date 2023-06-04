@@ -1,0 +1,16 @@
+<div class="flex flex-wrap justify-center mt-3">
+	<div *ngFor="let d of data" class="m-2 border border-gray-200 rounded-lg hover:shadow-xl hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+		<img class="h-80 rounded-t-lg cursor-pointer" (click)="watchRouter(d?.id?.videoId)" src="{{d?.snippet?.thumbnails?.high?.url}}" />
+		<div class="p-2 dark:text-white">
+			<h3 (click)="watchRouter(d?.id?.videoId)" title="{{d.snippet.title}}" class="mt-2 mb-1 cursor-pointer inline-block text-lg font-in font-medium hover:text-indigo-400 transition-all">
+				{{ (d?.snippet?.title.length > 35) ? (d?.snippet?.title | slice:0:35) + '...' : (d?.snippet?.title) }}
+			</h3>
+			<div class="flex justify-between">
+				<h3>{{d?.snippet?.publishedAt | date}}</h3>
+				<div class="flex gap-2">
+					Channel: <h3 [routerLink]="['channel/', d?.snippet?.channelId]" class="cursor-pointer underline font-po font-regular hover:text-blue-500 transition-all">{{d?.snippet?.channelTitle}}</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

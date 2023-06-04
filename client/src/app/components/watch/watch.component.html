@@ -1,0 +1,63 @@
+<div class="flex justify-between gap-3 ml-2 max-[850px]:mx-2 mt-5 max-[850px]:flex-col">
+	<div class="w-3/4 max-[850px]:w-full">
+		<div *ngFor="let d of data">
+			<div>
+				<div plyr class="w-full h-auto" plyrTitle="Video 1" [plyrPlaysInline]="true" [plyrSources]="videoSources"></div>
+			</div>
+			<div>
+				<h3 class="text-xl font-po font-medium">{{d?.snippet?.title}}</h3>
+				<br />
+				<h4 class="text-base font-po font-medium">{{d?.snippet?.publishedAt | date: 'medium'}}</h4>
+			</div>
+			<div class="flex justify-between my-2">
+				<div class="flex gap-2 items-center">
+					<h3>Channel:</h3>
+					<h3 class="my-1 text-lg hover:text-indigo-400 font-po font-regular transition-all cursor-pointer" (click)="channelRouter(d?.snippet?.channelId)">
+						{{d?.snippet?.channelTitle}}
+					</h3>
+				</div>
+				<div class="flex gap-3 text-lg bg-gray-300 p-2 max-[950px]:gap-2 max-[640px]:gap-1 max-[950px]:sm max-[640px]:text-base dark:bg-gray-700 rounded-2xl">
+					<h3>
+						<i class="fa-solid fa-eye"></i>&nbsp;{{d?.statistics?.viewCount | number}}
+					</h3>
+					<div class="border-r"></div>
+					<h3>
+						<i class="fa-solid fa-thumbs-up"></i>&nbsp;{{d?.statistics?.likeCount | number}}
+					</h3>
+					<div class="border-r"></div>
+					<h3>
+						<i class="fa-solid fa-thumbs-down"></i>&nbsp;{{d?.statistics?.disLikeCount | number}}
+					</h3>
+				</div>
+			</div>
+			<span *ngFor="let tag of d?.snippet?.tags" class="inline-block bg-gray-100 text-gray-800 text-sm font-medium mr-2 my-1 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+				{{tag}}
+			</span>
+			<h5>{{d?.snippet?.description}}</h5>
+		</div>
+		
+		<div *ngFor="let c of commentData" class="my-2 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md p-2">
+			<div class="flex gap-3 items-center">
+				<img class="rounded-full cursor-pointer" (click)="channelRouter(c?.snippet?.topLevelComment?.snippet?.authorChannelId?.value)" src="{{c?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl}}" />
+				<h3 class="cursor-pointer hover:text-indigo-500" (click)="channelRouter(c?.snippet?.topLevelComment?.snippet?.authorChannelId?.value)">{{c?.snippet?.topLevelComment?.snippet?.authorDisplayName}}</h3>
+				<h3>{{c?.snippet?.topLevelComment?.snippet?.publishedAt | date}}</h3>
+			</div>
+			<h3 class="mt-2">{{c?.snippet?.topLevelComment?.snippet?.textOriginal}}</h3>
+		</div>
+	</div>
+	
+	<div class="flex flex-col w-1/4 mr-2 max-[850px]:w-full">
+		<div class="mb-3 border border-indigo-400 rounded-lg p-1 max-[850px]:flex max-[500px]:flex max-[500px]:flex-col max-[850px]:items-center max-[850px]:gap-3" *ngFor="let s of suggestedData">
+			<img class="rounded-lg justify-center hover:cursor-pointer max-[950px]:44" (click)="watchRouter(s?.id?.videoId)" src="{{s?.snippet?.thumbnails?.medium?.url}}" />
+			<div>
+				<h3 class="hover:cursor-pointer inline-block font-po font-regular hover:text-indigo-400 transition-all" (click)="watchRouter(s?.id?.videoId)">
+					{{ (s?.snippet?.title.length > 35) ? (s?.snippet?.title | slice:0:35) + '...' : (s?.snippet?.title) }}
+				</h3>
+				<br />
+				<h3 class="hover:cursor-pointer inline-block hover:text-blue-400 transition-all" (click)="channelRouter(s?.snippet?.channelId)">
+					{{s?.snippet?.channelTitle}}
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>		

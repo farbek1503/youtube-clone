@@ -1,0 +1,28 @@
+<div *ngFor="let d of channelDetails">
+	<div class="flex justify-center mt-2">
+		<img class="w-3/4 rounded-lg" src="{{d?.brandingSettings?.image?.bannerExternalUrl}}" />
+	</div>
+	<div class="my-2 text-md flex justify-center items-center gap-3 text-gray-500 dark:text-gray-400">
+		<img class="h-16 rounded-full" src="{{d?.snippet?.thumbnails?.default?.url}}" />
+		<h3 class="text-lg font-po font-medium"><b>{{d?.brandingSettings?.channel?.title}}</b></h3>
+		<div class="bg-gray-700 rounded-2xl p-2 max-[640px]:p-1">
+			<h3><i title="Subscriber" class="fa-brands fa-gratipay"></i>&nbsp;{{d?.statistics?.subscriberCount | number}}</h3>
+			<div class="border-b my-1"></div>
+			<h3 title="{{d.snippet.publishedAt | date: 'medium'}}"><i class="fa-regular fa-calendar-days"></i>&nbsp;{{d?.snippet?.publishedAt | date}}</h3>
+		</div>
+	</div>
+	<div class="text-center mt-5 font-in font-regular">
+		<h3>{{d?.brandingSettings?.channel?.description}}</h3>
+		<h3>{{d?.brandingSettings?.channel?.keywords}}</h3>
+	</div>
+</div>
+
+<div class="flex flex-wrap justify-center mt-3">
+	<div *ngFor="let v of channelVidio" class="m-2 max-[640px]:m-1 p-2 max-[640px]:p-1 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+		<img class="max-h-64 max-w-64 rounded-lg cursor-pointer" (click)="watchRouter(v?.id)" src="{{v?.snippet?.thumbnails?.high?.url}}" />
+		<h3 (click)="watchRouter(v?.id)" class="cursor-pointer font-po font-regular hover:text-blue-500 transition-all">
+			{{ (v?.snippet?.title.length > 25) ? (v?.snippet?.title | slice:0:25) + '...' : (v?.snippet?.title) }}
+		</h3>
+		<h3>{{v.snippet.publishedAt | date}}</h3>
+	</div>
+</div>

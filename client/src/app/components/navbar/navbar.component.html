@@ -1,0 +1,27 @@
+<nav class="bg-white border-b-1 bg-gray-200 border-gray-200 dark:bg-gray-900 shadow-lg leading-4 max-[950px]:leading-3 max-[640px]:leading-none">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+		<div class="flex items-center">
+			<a routerLink="/" class="flex items-center">
+				<img src="./assets/navbar.png" class="h-12 max-[950px]:h-10 max-[640px]:h-8 mr-3" />
+				<span class="self-center text-2xl max-[950px]:text-lg max-[640px]:text-base font-semibold whitespace-nowrap dark:text-white"><b class="text-yellow-500">Bekki</b>Tube</span>
+			</a>
+			<div (click)="addTheme()" class="ml-5 p-3 max-[640px]:ml-3 max-[640px]:p-1 max-[640px]:px-2 cursor-pointer rounded-full hover:bg-gray-400">
+				<i class="fa-solid fa-circle-half-stroke fa-lg max-[640px]:text-base"></i>
+			</div>
+		</div>
+		<div class="w-1/2">
+			<div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 max-[640px]:pl-1 cursor-pointer">
+					<i class="fa-solid fa-xmark fa-lg p-2 py-4 max-[640px]:p-1 max-[640px]:py-3 hover:bg-gray-300 hover:rounded-full" (click)="search.value = ''"></i>
+				</div>
+        <input #search type="search" id="default-search" class="block w-full p-2 max-[640px]:p-1 pl-12 max-[640px]:pl-8 text-md text-gray-900 border rounded-lg bg-gray-50 font-po font-regular focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+				<div class="absolute inset-y-0 right-0 flex items-center pr-0 cursor-pointer" (click)="searchFunc(search)">
+					<i class="fa-solid fa-magnifying-glass fa-lg p-2 text-white max-[640px]:px-2 py-4 max-[640px]:py-1 bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg max-[640px]:text-base"></i>
+				</div>
+        <!-- <button type="button" (click)="searchFunc(search)" class="text-white absolute right-2.5 max-[640px]:right-1 bottom-1 max-[640px]:bottom-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2 max-[640px]:px-2 max-[640px]:py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+					<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+				</button> -->
+			</div>
+		</div>
+	</div>
+</nav>
