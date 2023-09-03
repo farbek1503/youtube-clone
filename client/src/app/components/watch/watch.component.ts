@@ -30,7 +30,7 @@ export class WatchComponent implements OnInit {
 		this.acRoute.params.subscribe(params => {
 			const id = params['id'];
 			this.apiSer.vidioDetails(id).subscribe((res:any) => {
-          if(res.error.code === "ERR_BAD_REQUEST"){
+          if(res.error){
               alert("Today's Limit Is Over, Please Enter Tomorrow")
               return
           }
@@ -39,7 +39,7 @@ export class WatchComponent implements OnInit {
 			})
 			
 			this.apiSer.vidioComment(id).subscribe((res:any) => {
-          if(res.error.code === "ERR_BAD_REQUEST"){
+          if(res.error){
               alert("Today's Limit Is Over, Please Enter Tomorrow")
               return
           }
@@ -47,7 +47,7 @@ export class WatchComponent implements OnInit {
 			})
 			
 			this.apiSer.suggested(id).subscribe((res:any) => {
-          if(res.error.code === "ERR_BAD_REQUEST"){
+          if(res.error){
               alert("Today's Limit Is Over, Please Enter Tomorrow")
               return
           }
