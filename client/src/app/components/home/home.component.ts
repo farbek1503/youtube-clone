@@ -14,12 +14,10 @@ export class HomeComponent implements OnInit {
 	
 	ngOnInit(): void {
 		this.apiSer.getRandom().subscribe((res:any) => {
-			if(res.data.items == undefined){
-				alert("Today's Limit Is Over, Please Enter Tomorrow")
-			}else{
 				this.data = res.data.items
-			}
-		})
+		}, (err:any) => {
+        alert("Today's Limit Is Over, Please Enter Tomorrow")
+    })
 	}
 	
 	watchRouter(id:any){
