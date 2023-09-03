@@ -47,7 +47,7 @@
 	</div>
 	
 	<div class="flex flex-col w-1/4 mr-2 max-[850px]:w-full">
-		<div class="mb-3 border border-indigo-400 rounded-lg p-1 max-[850px]:flex max-[500px]:flex max-[500px]:flex-col max-[850px]:items-center max-[850px]:gap-3" *ngFor="let s of suggestedData">
+		<div class="mb-3 p-1 max-[850px]:flex max-[500px]:flex max-[500px]:flex-col max-[850px]:items-center max-[850px]:gap-3" *ngFor="let s of suggestedData">
 			<img class="rounded-lg justify-center hover:cursor-pointer max-[950px]:44" (click)="watchRouter(s?.id?.videoId)" src="{{s?.snippet?.thumbnails?.medium?.url}}" />
 			<div>
 				<h3 class="hover:cursor-pointer inline-block font-po font-regular hover:text-indigo-400 transition-all" (click)="watchRouter(s?.id?.videoId)">
@@ -55,7 +55,7 @@
 				</h3>
 				<br />
 				<h3 class="hover:cursor-pointer inline-block hover:text-blue-400 transition-all" (click)="channelRouter(s?.snippet?.channelId)">
-					{{s?.snippet?.channelTitle}}
+					Channel: {{s?.snippet?.channelTitle}}
 				</h3>
 			</div>
 		</div>
