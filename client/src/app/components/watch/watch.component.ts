@@ -29,6 +29,7 @@ export class WatchComponent implements OnInit {
   ngOnInit(): void {
 		this.acRoute.params.subscribe(params => {
 			const id = params['id'];
+      for (let i = 0; i <= 60; i++){
 			this.apiSer.vidioDetails(id).subscribe((res:any) => {
 					this.videoSources[0].src = res.data.items[0].id
 					this.data = res.data.items
@@ -47,6 +48,7 @@ export class WatchComponent implements OnInit {
 			}, (err:any) => {
           alert("Today's Limit Is Over, Please Enter Tomorrow")
       })
+      }
 		});
 	}
 	
