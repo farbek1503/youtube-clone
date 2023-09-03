@@ -30,29 +30,23 @@ export class WatchComponent implements OnInit {
 		this.acRoute.params.subscribe(params => {
 			const id = params['id'];
 			this.apiSer.vidioDetails(id).subscribe((res:any) => {
-				if(res.data.items == undefined){
-					alert("Today's Limit Is Over, Please Enter Tomorrow")
-				}else{
 					this.videoSources[0].src = res.data.items[0].id
 					this.data = res.data.items
-				}
-			})
+			}, (err:any) => {
+          alert("Today's Limit Is Over, Please Enter Tomorrow")
+      })
 			
 			this.apiSer.vidioComment(id).subscribe((res:any) => {
-				if(res.data.items == undefined){
-					alert("Today's Limit Is Over, Please Enter Tomorrow")
-				}else{
 					this.commentData = res.data.items
-				}
-			})
+			}, (err:any) => {
+          alert("Today's Limit Is Over, Please Enter Tomorrow")
+      })
 			
 			this.apiSer.suggested(id).subscribe((res:any) => {
-				if(res.data.items == undefined){
-					alert("Today's Limit Is Over, Please Enter Tomorrow")
-				}else{
 					this.suggestedData = res.data.items
-				}
-			})
+			}, (err:any) => {
+          alert("Today's Limit Is Over, Please Enter Tomorrow")
+      })
 		});
 	}
 	
