@@ -18,19 +18,15 @@ export class ChannelComponent implements OnInit {
 		this.acRoute.params.subscribe(params => {
 			const id = params['id'];
 			this.apiSer.channelDetails(id).subscribe((res:any) => {
-				if(res.data.items == undefined){
-					alert("Today's Limit Is Over, Please Enter Tomorrow")
-				}else{
 					this.channelDetails = res.data.items
-				}
-			})
+			}, (err:any) => {
+          alert("Today's Limit Is Over, Please Enter Tomorrow")
+      })
 			this.apiSer.channelVidio(id).subscribe((res:any) => {
-				if(res.data.items == undefined){
-					alert("Today's Limit Is Over, Please Enter Tomorrow")
-				}else{
 					this.channelVidio = res.data.items
-				}
-			})
+			}, (err:any) => {
+          alert("Today's Limit Is Over, Please Enter Tomorrow")
+      })
 		});
 	}
 	
