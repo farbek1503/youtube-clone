@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 	
 	ngOnInit(): void {
 		this.apiSer.getRandom().subscribe((res:any) => {
-        if(res.error.code === "ERR_BAD_REQUEST"){
+        if(res.error){
             alert("Today's Limit Is Over, Please Enter Tomorrow")
             return
         }
