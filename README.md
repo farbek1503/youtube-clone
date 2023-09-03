@@ -1,6 +1,6 @@
 # YouTube-Clone [Link](https://youtube-bek.vercel.app/)
 
-## RapidApi
+## RapidApi - YouTube v3
 ```sh
 https://rapidapi.com/ytdlfree/api/youtube-v31/
 ```
